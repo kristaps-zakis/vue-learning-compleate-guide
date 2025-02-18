@@ -6,6 +6,16 @@ const app = Vue.createApp({
       confirmedName: '',
     };
   },
+  computed: {
+    fullName() {
+      console.log('Running fullName');
+      if (this.userName === '') {
+        return '';
+      }
+
+      return this.userName + ' Zaķis';
+    },
+  },
   methods: {
     setName(event, lastName) {
       /*
@@ -34,6 +44,7 @@ const app = Vue.createApp({
       this.confirmedName = '';
     },
     outputFullName() {
+      console.log('Running outputFullName');
       if (this.userName === '') {
         return '';
       }
