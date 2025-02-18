@@ -22,8 +22,19 @@
       <button v-on:click="removeCount">Remove</button>
       <p>Result: {{ counter }}</p>
       <!-- <input v-on:input="userName = $event.target.value" type="text" /> -->
-      <input v-on:input="setName($event, 'Zaķis')" type="text" />
-      <p>Your Name: {{ userName }}</p>
+      <input 
+        v-on:input="setName($event, 'Zaķis')" 
+        v-on:keyup.enter="confirmInput"
+      type="text" />
+      <p>Your Name: {{ confirmedName }}</p>
+
+      <!-- c-on:submit.prevent  
+       * .prevent modyfiyer
+      stops site from reloading -->
+      <form v-on:submit.prevent="handleSubmit"> 
+          <input type="text" />
+          <button>Sign up</button>
+      </form>
     </section>
   </body>
 </html>
