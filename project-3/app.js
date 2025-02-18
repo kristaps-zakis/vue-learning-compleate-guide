@@ -1,7 +1,7 @@
 const app = Vue.createApp({
   data() {
     return {
-      counter: 0,
+      counter: 5,
       userName: '',
       confirmedName: '',
     };
@@ -27,6 +27,18 @@ const app = Vue.createApp({
 
     handleSubmit() {
       console.log('Form submitted!');
+    },
+
+    resetName() {
+      this.userName = '';
+      this.confirmedName = '';
+    },
+    outputFullName() {
+      if (this.userName === '') {
+        return '';
+      }
+
+      return this.userName + ' Zaķis';
     },
   },
 });
