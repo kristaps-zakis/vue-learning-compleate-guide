@@ -2,8 +2,11 @@
     <section>
         <header><h1>My Friends</h1></header>
         <ul>
-            <friend-contact></friend-contact>
-            <friend-contact></friend-contact>
+            <friend-contact 
+                name="AAA BBB" 
+                phone-number="8989898"
+                email-address="aaa@bbb.cc"
+            ></friend-contact>
         </ul>
     </section>
 </template>
@@ -14,16 +17,16 @@ export default {
   components: { FriendContact },
     data() {
         return {
-            friends: [
+            // friends: [
                 
-                {
-                    id: 'kristaps',
-                    name: "AAA BBB",
-                    phone: "asdasd-asd",
-                    email: "dasdasd@asd.dd"
-                }
+            //     {
+            //         id: 'kristaps',
+            //         name: "AAA BBB",
+            //         phone: "asdasd-asd",
+            //         email: "dasdasd@asd.dd"
+            //     }
         
-            ]
+            // ]
         }
     }
 }
