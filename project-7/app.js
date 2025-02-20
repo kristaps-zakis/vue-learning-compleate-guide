@@ -10,13 +10,17 @@ const app = Vue.createApp({
       this.currentUserInput = event.target.value;
     },
     setText() {
-      this.message = this.currentUserInput;
+      // this.message = this.currentUserInput;
+      this.message = this.$refs.userText.value;
+
+      // this.$refs.userText -- vanilla JS object
+      console.log(this.$refs.userText);
+      console.dir(this.$refs.userText);
     },
   },
 });
 
 app.mount('#app');
-
 
 const app2 = Vue.createApp({
   template: `
@@ -43,9 +47,9 @@ const handler = {
 
     target.message = value;
 
-    console.log(target);
-    console.log(key);
-    console.log(value);
+    // console.log(target);
+    // console.log(key);
+    // console.log(value);
     // target[key] = value;
   },
 };
@@ -53,5 +57,5 @@ const handler = {
 const proxy = new Proxy(data, handler);
 proxy.message = 'Vue is great! x2';
 
-console.log(proxy.message);
-console.log(proxy.longMesage);
+// console.log(proxy.message);
+// console.log(proxy.longMesage);
