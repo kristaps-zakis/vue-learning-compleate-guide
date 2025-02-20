@@ -18,9 +18,28 @@ const app = Vue.createApp({
       console.dir(this.$refs.userText);
     },
   },
+  beforeCreate() {
+    console.log('Before Create');
+  },
+  created() {
+    console.log('Created');
+  },
+  beforeMount() {
+    console.log('Before Mount');
+  },
+  mounted() {
+    console.log('Mounted');
+  },
+  beforeUpdate() {
+    console.log('Before Update');
+  },
+  updated() {
+    console.log('Updated');
+  },
 });
 
 app.mount('#app');
+// app.unmount();
 
 const app2 = Vue.createApp({
   template: `
