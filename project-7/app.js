@@ -18,6 +18,18 @@ const app = Vue.createApp({
 app.mount('#app');
 
 
+const app2 = Vue.createApp({
+  template: `
+    <h2>{{ favoriteMeal }}</h2>
+  `,
+  data() {
+    return {
+      favoriteMeal: 'Pizza',
+    };
+  },
+});
+app2.mount('#app2');
+
 const data = {
   message: 'Vue is great!',
   longMesage: 'This is longer message',
