@@ -17,16 +17,8 @@ export default {
   components: { FriendContact },
     data() {
         return {
-            // friends: [
-                
-            //     {
-            //         id: 'kristaps',
-            //         name: "AAA BBB",
-            //         phone: "asdasd-asd",
-            //         email: "dasdasd@asd.dd"
-            //     }
-        
-            // ]
+   
+            friendIsFavorite: "aaa"
         }
     }
 }

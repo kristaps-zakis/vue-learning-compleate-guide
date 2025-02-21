@@ -21,7 +21,7 @@ export default {
             detailsAreVisible: false,
             friend: {
                     id: 'manuel',
-                    name: "Kristaps Zakis",
+                    name: "Manuel Manule",
                     phone: "asdasd",
                     email: "asd@asd.dd"
                 },
