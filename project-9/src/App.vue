@@ -6,6 +6,7 @@
                 name="AAA BBB" 
                 phone-number="8989898"
                 email-address="aaa@bbb.cc"
+                v-bind:is-favorite="true"
             ></friend-contact>
         </ul>
     </section>

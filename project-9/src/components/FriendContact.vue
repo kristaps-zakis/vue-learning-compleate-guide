@@ -11,11 +11,31 @@
 
 <script>
 export default {
-    props: [
-        'name',
-        'phoneNumber',
-        'emailAddress'
-    ],
+    // props: [
+    //     'name',
+    //     'phoneNumber',
+    //     'emailAddress'
+    // ],
+
+    props: {
+        name: {
+            type: String,
+            required: true
+        },
+        phoneNumber: {
+            type: String,
+            required: true
+        },
+        emailAddress: String,
+        isFavorite: {
+            type: Boolean,
+            required: false,
+            default: false,
+            // validator: function (value) {
+            //     return value === "1" || value === "0";
+            // }
+        }
+    },
     data() {
         return {
             detailsAreVisible: false,
