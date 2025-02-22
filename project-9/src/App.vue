@@ -2,11 +2,12 @@
     <section>
         <header><h1>My Friends</h1></header>
         <ul>
-            <friend-contact 
-                name="AAA BBB" 
-                phone-number="8989898"
-                email-address="aaa@bbb.cc"
-                v-bind:is-favorite="true"
+            <friend-contact v-for="friend in friends"
+                :key="friend.id"
+                :name="friend.name" 
+                :phone-number="friend.phone"
+                :email-address="friend.email"
+                :is-favorite="friend.isFavorite"
             ></friend-contact>
         </ul>
     </section>
@@ -17,9 +18,23 @@ import FriendContact from './components/FriendContact.vue'
 export default {
   components: { FriendContact },
     data() {
-        return {
-   
-            friendIsFavorite: "aaa"
+        return { 
+            friends: [
+                {
+                    id: "kristaps",
+                    name: "Kristaps Zaķis",
+                    phone: "123456789",
+                    email: "aaa@bb.cc",
+                    isFavorite: false
+                },
+                {
+                    id: "kristaps",
+                    name: "Kristaps Zaķis",
+                    phone: "123456789",
+                    email: "aaa@bb.cc",
+                    isFavorite: true
+                }
+            ]
         }
     }
 }
