@@ -3,11 +3,13 @@
         <header><h1>My Friends</h1></header>
         <ul>
             <friend-contact v-for="friend in friends"
+                v-bind:id="friend.id"
                 :key="friend.id"
                 :name="friend.name" 
                 :phone-number="friend.phone"
                 :email-address="friend.email"
                 :is-favorite="friend.isFavorite"
+                v-on:toggle-favorite="toggleFavoriteStatus"
             ></friend-contact>
         </ul>
     </section>
@@ -28,13 +30,26 @@ export default {
                     isFavorite: false
                 },
                 {
-                    id: "kristaps",
-                    name: "Kristaps Zaķis",
+                    id: "martins",
+                    name: "Mārtiņš Zaķis",
+                    phone: "123456789",
+                    email: "aaa@bb.cc",
+                    isFavorite: true
+                },                
+                {
+                    id: "annija",
+                    name: "Annija Zaķe",
                     phone: "123456789",
                     email: "aaa@bb.cc",
                     isFavorite: true
                 }
             ]
+        }
+    },
+    methods: {
+        toggleFavoriteStatus(friendId) {
+            const foundFriend = this.friends.find(friend => friend.id === friendId);
+            foundFriend.isFavorite = !foundFriend.isFavorite
         }
     }
 }
