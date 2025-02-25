@@ -19,7 +19,6 @@
 
             <div class="form-control">
                 <label for="description">Description</label>
-                <!-- <input id="description" name="description" type="text" placeholder="Description" v-model="description" />   -->
                 <textarea id="description" name="description" rows="3" placeholder="Description" ref="descInput"></textarea>  
             </div>
             
@@ -37,11 +36,8 @@
  
 </template>
 <script>
-import BaseDialog from '../UI/BaseDialog.vue';
 
 export default {
-  components: { BaseDialog },
-
   inject: ['addResources'],
   data() {
     return {

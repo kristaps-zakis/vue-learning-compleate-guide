@@ -23,7 +23,8 @@ export default {
     provide() {
         return {
             resources: this.storedResources,
-            addResources: this.addResources
+            addResources: this.addResources,
+            removeResource: this.removeResource,
         }
     },
     data() {
@@ -68,6 +69,24 @@ export default {
 
             this.storedResources.unshift(newResource);
             this.selectedTab = 'stored-resources';
+        },
+        removeResource(resId) {
+
+            const resIndex = this.storedResources.findIndex(
+                res => res.id === resId
+            );
+
+            this.storedResources.splice(resIndex, 1);
+
+
+            // This doesnt work as it creates new element with the same id
+            // arrays are stored in memory
+            
+            // this.storedResources = this.storedResources.filter(
+            //     res => res.id !== resId
+            // );
+
+            console.log(this.storedResources);
         },
     }
 }
