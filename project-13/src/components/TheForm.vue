@@ -80,7 +80,10 @@
     </div>
 
     <div class="form-control">
-      <rating-control></rating-control>
+      <rating-control v-model="rating"></rating-control>
+
+      <!-- by default binding manual binding on custom component  -- same as using v-model -->
+      <!-- <rating-control :model-value="rating" @update:moduleValue></rating-control> -->
     </div>
 
     <div>
@@ -105,12 +108,13 @@ export default {
       interest: [],
       how: null,
       confirm: false,
+      rating: null,
       userNameValidity: 'penning',
     }
   },
   methods: {
     submitForm() {
-      console.log('userName ' + this.userName)
+      // console.log('userName ' + this.userName)
       this.userName = ''
 
       // console.log("User age ");
@@ -133,8 +137,11 @@ export default {
 
       // console.log('Confirm')
       // console.log(this.confirm)
+      this.confirm = false;
 
-      this.confirm = false
+      console.log("Rating");
+      console.log(this.rating)
+      this.rating = null;
     },
     validateInput() {
       if (this.userName === '') {

@@ -1,27 +1,41 @@
 <template>
   <ul class="stars">
-    <li :class="{ active: activeOption === 'poor' }">
-      <button type="button" @click="active('poor')">Poor</button>
+    <!-- <li :class="{ active: activeOption === 'poor' }"> -->
+    <li :class="{ active: modelValue === 'poor' }">
+      <button type="button" @click="activate('poor')">Poor</button>
     </li>
-    <li :class="{ active: activeOption === 'avarage' }">
-      <button type="button" @click="active('avarage')">Avarage</button>
+    <li :class="{ active: modelValue === 'avarage' }">
+      <button type="button" @click="activate('avarage')">Avarage</button>
     </li>
-    <li :class="{ active: activeOption === 'good' }">
-      <button type="button" @click="active('good')">Good</button>
+    <li :class="{ active: modelValue === 'good' }">
+      <button type="button" @click="activate('good')">Good</button>
     </li>
   </ul>
 </template>
 
 <script>
 export default {
-  data() {
-    return {
-      activeOption: null,
-    }
-  },
+  props: ['modelValue'],
+//   special event emmited by default
+  emits: ['update:modelValue'],
+
+//   data() {
+//     return {
+//       activeOption: this.modelValue,
+//     }
+//   },
+
+    // computed: {
+    //     activeOption() {
+    //         console.log('Woot', this.modelValue)
+    //         return this.modelValue;
+    //     }
+    // },
   methods: {
-    active(option) {
-      this.activeOption = option
+    activate(option) {
+    //   this.activeOption = option;
+      this.$emit('update:modelValue', option);
+    //   console.log("Emiting?", option)
     },
   },
 }
