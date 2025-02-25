@@ -79,6 +79,10 @@
       <label for="confirm-terms">Agree to terms of use?</label>
     </div>
 
+    <div class="form-control">
+      <rating-control></rating-control>
+    </div>
+
     <div>
       <button>Save Data</button>
     </div>
@@ -86,7 +90,13 @@
 </template>
 
 <script>
+import RatingControl from './RatingControl.vue'
+// import RatingControl from "./RatingControl";
+
 export default {
+  components: {
+    RatingControl,
+  },
   data() {
     return {
       userName: '',
@@ -109,20 +119,20 @@ export default {
       // console.log(31);
       this.userAge = null
 
-      console.log(`Refferer: ${this.referrer}`)
+      // console.log(`Refferer: ${this.referrer}`)
       this.referrer = 'wom'
 
-      console.log('checkboxes')
-      console.log(this.interest)
+      // console.log('checkboxes')
+      // console.log(this.interest)
 
-      console.log('radio')
-      console.log(this.how)
+      // console.log('radio')
+      // console.log(this.how)
 
       this.interest = []
       this.how = null
 
-      console.log('Confirm')
-      console.log(this.confirm)
+      // console.log('Confirm')
+      // console.log(this.confirm)
 
       this.confirm = false
     },
