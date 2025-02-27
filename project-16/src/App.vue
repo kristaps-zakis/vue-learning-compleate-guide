@@ -1,49 +1,50 @@
 <template>
   <div class="container">
-    <div class="block" :class="{animate: animateBlock}"></div>
+    <div class="block" :class="{ animate: animateBlock }"></div>
     <button @click="animateBlockMethod">Animate</button>
   </div>
   <div class="container">
     <!-- name="fade-button" mode="out-in" -->
-    <transition name="para" enter-to-class="para--enter-to" enter-active-class="para--enter-active" >
+    <transition name="para" enter-to-class="para--enter-to" enter-active-class="para--enter-active">
       <p v-if="paragraphIsVisible">This paragraph is only sometimes visible</p>
     </transition>
     <button @click="toggleParagraph">Toggle paragraph</button>
   </div>
-  <base-modal @close="hideDialog" v-if="dialogIsVisible">
-    <p>This is a test dialog!</p>
-    <button @click="hideDialog">Close it!</button>
-  </base-modal>
+  <!-- <transition name="modal" > -->
+    <base-modal @close="hideDialog" :open="dialogIsVisible">
+      <p>This is a test dialog!</p>
+      <button @click="hideDialog">Close it!</button>
+    </base-modal>
+  <!-- </transition> -->
   <div class="container">
     <button @click="showDialog">Show Dialog</button>
   </div>
-</template>  
+</template>
 
 <script>
 export default {
   data() {
     return {
-        animateBlock: false,
-        dialogIsVisible: false, 
-        paragraphIsVisible: false,
-      };
+      animateBlock: false,
+      dialogIsVisible: false,
+      paragraphIsVisible: false,
+    }
   },
   methods: {
-
     animateBlockMethod() {
-      this.animateBlock = !this.animateBlock;
+      this.animateBlock = !this.animateBlock
     },
     toggleParagraph() {
-      this.paragraphIsVisible = !this.paragraphIsVisible;
+      this.paragraphIsVisible = !this.paragraphIsVisible
     },
     showDialog() {
-      this.dialogIsVisible = true;
+      this.dialogIsVisible = true
     },
     hideDialog() {
-      this.dialogIsVisible = false;
+      this.dialogIsVisible = false
     },
   },
-};
+}
 </script>
 
 <style>
@@ -120,6 +121,22 @@ button:active {
   opacity: 0;
   transform: translateY(-30px);
 } */
+
+/* .modal-enter-from {
+  opacity: 0;
+  transform: translateY(-50px) scale(0.9);
+} */
+.modal-enter-active {
+  transition: all 0.3s ease-out;
+  animation: modal 0.3s ease-out; 
+   /* duration timing-function delay iteration-count direction fill-mode; */
+
+}
+/* .modal-enter-to {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+} */
+
 
 @keyframes slide-fade {
   0% {
