@@ -5,7 +5,7 @@
   </div>
   <div class="container">
     <!-- name="fade-button" mode="out-in" -->
-    <transition>
+    <transition name="para" enter-to-class="para--enter-to" enter-active-class="para--enter-active" >
       <p v-if="paragraphIsVisible">This paragraph is only sometimes visible</p>
     </transition>
     <button @click="toggleParagraph">Toggle paragraph</button>
@@ -106,6 +106,9 @@ button:active {
   transform: translateY(0); */
 }
 
+.para--enter-from {
+  opacity: 0;
+}
 /* .v-leave-from {
   opacity: 1;
   transform: translateY(0);
