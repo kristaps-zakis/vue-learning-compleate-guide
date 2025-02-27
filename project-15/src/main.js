@@ -51,6 +51,14 @@ const router = createRouter({
     },
   ],
   //   linkActiveClass: 'active',
+  scrollBehavior(to, from, savedPosition) {
+    // to and from accesable also in this.$route
+    console.log(to, from, savedPosition)
+    if (savedPosition) {
+      return savedPosition
+    }
+    return { left: 0, top: 0 }
+  },
 })
 
 const app = createApp(App)
