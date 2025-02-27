@@ -83,6 +83,14 @@ router.beforeEach(function (to, from, next) {
   //   }
 })
 
+router.afterEach(function (to, from) {
+  console.log('Global afterEach')
+  console.log(to, from)
+
+  // dont have next
+  // good for analytics
+})
+
 const app = createApp(App)
 
 app.use(router)
