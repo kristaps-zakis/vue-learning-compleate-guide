@@ -18,13 +18,16 @@ const router = createRouter({
     {
       path: '/teams',
       component: TeamList,
+      children: [
+        {
+          path: ':teamId',
+          component: TeamMembers,
+          props: true,
+        }, // teams/t1
+      ],
       //   alias: '/',
     },
-    {
-      path: '/teams/:teamId',
-      component: TeamMembers,
-      props: true,
-    },
+
     {
       path: '/users',
       component: UsersList,
