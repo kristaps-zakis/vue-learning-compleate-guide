@@ -57,6 +57,9 @@ export default {
     // this.$route.path
     // this.loadTeamMembers(this.$route);
     this.loadTeamMembers(this.teamId);
+    
+    //query parameters are not provided as props
+    console.log(this.$route.query);
   },
 
   watch: {
