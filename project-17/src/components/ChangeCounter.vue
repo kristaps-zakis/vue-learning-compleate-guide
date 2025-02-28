@@ -1,13 +1,14 @@
 <template>
-    <button @click="addOne">Add 1</button>
+  <button @click="addOne">Add 1</button>
 </template>
 
 <script>
-    export default {
-        methods: {
-            addOne() {
-                this.$store.commit('addOne');
-            }
-        }
-    }
+export default {
+  methods: {
+    addOne() {
+    //   this.$store.commit('addOne')
+      this.$store.dispatch('increment')
+    },
+  },
+}
 </script>

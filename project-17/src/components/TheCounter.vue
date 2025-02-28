@@ -1,14 +1,14 @@
 <template>
-    <h3>{{ count }}</h3>
+  <h3>{{ count }}</h3>
 </template>
 
 <script>
 export default {
-    computed: {
-        count() {
-            // return this.$store.state.count
-            return this.$store.getters.finalCounter
-        }
-    }
+  computed: {
+    count() {
+      // return this.$store.state.count
+      return this.$store.getters.finalCounter
+    },
+  },
 }
 </script>
