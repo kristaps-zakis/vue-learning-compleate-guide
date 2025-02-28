@@ -7,6 +7,7 @@ const store = createStore({
   state() {
     return {
       count: 0,
+      isAuthenticated: false,
     }
   },
   mutations: {
@@ -18,8 +19,14 @@ const store = createStore({
     increase(state, payload) {
       state.count += payload.value
     },
+    login(state, payload) {
+      state.isAuthenticated = payload.isAuth;
     },
-    
+    logout(state) {
+      state.isAuthenticated = false
+    },
+  },
+
   actions: {
     increment(context) {
       setTimeout(() => {
@@ -28,8 +35,14 @@ const store = createStore({
     },
 
     increase(context, payload) {
-        console.log(context)
+      console.log(context)
       context.commit('increase', payload)
+    },
+    login(context) {
+      context.commit('login', { isAuth: true })
+    },
+    logout(context) {
+      context.commit('logout', { isAuth: false })
     },
   },
   getters: {
@@ -49,9 +62,15 @@ const store = createStore({
 
       return finalCounter
     },
+    isAuthenticated(state) {
+        console.log(`Check is auth`);
+      return state.isAuthenticated
+    }
   },
 })
 
+
 const app = createApp(App)
 app.use(store)
+// app.use(authState)
 app.mount('#app')

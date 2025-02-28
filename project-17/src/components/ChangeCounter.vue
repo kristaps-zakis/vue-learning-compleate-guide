@@ -1,6 +1,6 @@
 <template>
   <button @click="inc">Add 1</button>
-  <button @click="by({value:10})">Add 2</button>
+  <button @click="by({ value: 10 })">Add 2</button>
 </template>
 
 <script>
@@ -16,8 +16,8 @@ export default {
 
     ...mapActions({
       inc: 'increment',
-      by: 'increase'
-    })
+      by: 'increase',
+    }),
   },
 }
 </script>
