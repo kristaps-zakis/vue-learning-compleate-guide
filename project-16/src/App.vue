@@ -3,11 +3,14 @@
     <div class="block" :class="{ animate: animateBlock }"></div>
     <button @click="animateBlockMethod">Animate</button>
   </div>
+
+  <div class="container">
+    <UsersList />
+  </div>
   <div class="container">
     <!-- name="fade-button" mode="out-in" -->
     <!-- <transition name="para" enter-to-class="para--enter-to" enter-active-class="para--enter-active"> -->
     <transition
-     
       @before-enter="beforeEnter"
       @enter="enter"
       @after-enter="afterEnter"
@@ -17,7 +20,6 @@
       @enter-cancelled="enterCancelled"
       @leave-cancelled="leaveCancelled"
       :css="false"
-
     >
       <p v-if="paragraphIsVisible">This paragraph is only sometimes visible</p>
     </transition>
@@ -43,7 +45,11 @@
 </template>
 
 <script>
+import UsersList from './components/UsersList.vue'
 export default {
+  components: {
+    UsersList,
+  },
   data() {
     return {
       animateBlock: false,
@@ -63,7 +69,7 @@ export default {
       // console.log('enter')
       let round = 1
 
-     this.enterInterval = setInterval(() => {
+      this.enterInterval = setInterval(() => {
         el.style.opacity = round * 0.01
         round++
 
@@ -98,7 +104,6 @@ export default {
     },
     afterLeave() {
       console.log(`afterLeave`)
-
     },
 
     enterCancelled() {
