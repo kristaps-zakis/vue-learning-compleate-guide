@@ -7,7 +7,7 @@
     <!-- name="fade-button" mode="out-in" -->
     <!-- <transition name="para" enter-to-class="para--enter-to" enter-active-class="para--enter-active"> -->
     <transition
-      name="para"
+     
       @before-enter="beforeEnter"
       @enter="enter"
       @after-enter="afterEnter"
@@ -16,6 +16,7 @@
       @after-leave="afterLeave"
       @enter-cancelled="enterCancelled"
       @leave-cancelled="leaveCancelled"
+      :css="false"
 
     >
       <p v-if="paragraphIsVisible">This paragraph is only sometimes visible</p>
