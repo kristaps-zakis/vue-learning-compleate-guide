@@ -5,7 +5,8 @@
   </div>
   <div class="container">
     <!-- name="fade-button" mode="out-in" -->
-    <transition name="para" enter-to-class="para--enter-to" enter-active-class="para--enter-active">
+    <!-- <transition name="para" enter-to-class="para--enter-to" enter-active-class="para--enter-active"> -->
+    <transition name="para" @before-enter="beforeEnter" @enter="enter" @after-enter="afterEnter" @before-leave="beforeLeave" @leave="enter" @after-leave="afterEnter"> 
       <p v-if="paragraphIsVisible">This paragraph is only sometimes visible</p>
     </transition>
     <button @click="toggleParagraph">Toggle paragraph</button>
@@ -40,6 +41,20 @@ export default {
     }
   },
   methods: {
+    beforeEnter() {
+      console.log('beforeEnter')
+    },
+    enter() {
+      console.log('enter')  
+    },
+    afterEnter() {
+      console.log('afterEnter')
+    },
+    beforeLeave(el) {
+      console.log('beforeLeave');
+      console.log(el);
+
+    },
     showUsers() {
       this.usersAreVisible = true
     },
@@ -120,6 +135,10 @@ button:active {
 .v-enter-to {
   /* opacity: 1;
   transform: translateY(0); */
+}
+
+.para-enter-active {
+  animation: slide-fade 2s ease-in-out;
 }
 
 .para--enter-from {
