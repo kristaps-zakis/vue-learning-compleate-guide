@@ -1,55 +1,19 @@
 <template>
-  <div class="container">
-    <div class="block" :class="{ animate: animateBlock }"></div>
-    <button @click="animateBlockMethod">Animate</button>
-  </div>
-
-  <div class="container">
-    <UsersList />
-  </div>
-  <div class="container">
-    <!-- name="fade-button" mode="out-in" -->
-    <!-- <transition name="para" enter-to-class="para--enter-to" enter-active-class="para--enter-active"> -->
-    <transition
-      @before-enter="beforeEnter"
-      @enter="enter"
-      @after-enter="afterEnter"
-      @before-leave="beforeLeave"
-      @leave="leave"
-      @after-leave="afterLeave"
-      @enter-cancelled="enterCancelled"
-      @leave-cancelled="leaveCancelled"
-      :css="false"
-    >
-      <p v-if="paragraphIsVisible">This paragraph is only sometimes visible</p>
+  
+  <router-view v-slot="slotProps">
+    <transition name="route" mode="out-in">
+      <component :is="slotProps.Component"></component>
     </transition>
-    <button @click="toggleParagraph">Toggle paragraph</button>
-  </div>
-
-  <div class="container">
-    <transition name="fade-button" mode="out-in">
-      <button @click="showUsers" v-if="!usersAreVisible">Show Users</button>
-      <button @click="hideUsers" v-else>Hide Users</button>
-    </transition>
-  </div>
-
-  <!-- <transition name="modal" > -->
-  <base-modal @close="hideDialog" :open="dialogIsVisible">
-    <p>This is a test dialog!</p>
-    <button @click="hideDialog">Close it!</button>
-  </base-modal>
-  <!-- </transition> -->
-  <div class="container">
-    <button @click="showDialog">Show Dialog</button>
-  </div>
+    </router-view>
+  
 </template>
 
 <script>
-import UsersList from './components/UsersList.vue'
+// import UsersList from './components/UsersList.vue'
 export default {
-  components: {
-    UsersList,
-  },
+  // components: {
+  //   UsersList,
+  // },
   data() {
     return {
       animateBlock: false,
@@ -246,6 +210,23 @@ button:active {
 
 .fade-button-leave-active {
   transition: opacity 0.3s ease-in;
+}
+
+
+.route-enter-from {
+  opacity: 0;
+  transform: translateY(-30px);
+}
+.route-enter-active {
+  transition: all 0.3s ease-out;
+}
+.route-leave-active {
+  transition: all 0.3s ease-in;
+}
+.route-enter-to,
+.route-leave-from {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 @keyframes slide-fade {
