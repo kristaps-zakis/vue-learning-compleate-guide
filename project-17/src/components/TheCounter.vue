@@ -5,6 +5,8 @@
 <script>
 import { mapGetters } from 'vuex'
 
+console.log(mapGetters(['finalCounter']))
+
 export default {
   computed: {
     ...mapGetters(['finalCounter']),

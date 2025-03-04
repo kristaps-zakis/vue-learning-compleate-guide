@@ -27,11 +27,10 @@ export default {
     UserAuth,
   },
   computed: {
-        isAuth() {
-            
-            return this.$store.getters.isAuthenticated
-        }
+    isAuth() {
+      return this.$store.getters.isAuthenticated
     },
+  },
   methods: {
     addOne() {
       // this.$store.commit('increase', { value: 10 });

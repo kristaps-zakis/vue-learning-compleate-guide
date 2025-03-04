@@ -5,19 +5,19 @@
 
 <script>
 export default {
-    methods: {
-        login() {
-            console.log(`dispatch login`)
-            this.$store.dispatch('login', {isAuth: true})
-        },
-        logout() {
-            this.$store.dispatch('logout')
-        }       
+  methods: {
+    login() {
+      console.log(`dispatch login`)
+      this.$store.dispatch('login', { isAuth: true })
     },
-    computed: {
-        isAuth() {
-            return this.$store.getters.isAuthenticated
-        }
-    }
+    logout() {
+      this.$store.dispatch('logout')
+    },
+  },
+  computed: {
+    isAuth() {
+      return this.$store.getters.isAuthenticated
+    },
+  },
 }
 </script>
