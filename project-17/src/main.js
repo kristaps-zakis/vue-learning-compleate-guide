@@ -4,6 +4,7 @@ import { createStore } from 'vuex'
 import App from './App.vue'
 
 const counterModule = {
+namespaced: true,
   state() {
     return {
       count: 0,
@@ -16,6 +17,7 @@ const counterModule = {
     },
 
     increase(state, payload) {
+        console.log(state)
       state.count += payload.value
     },
   },
@@ -32,6 +34,10 @@ const counterModule = {
     },
   },
   getters: {
+    // testAuth(state, getters, rootState, rootGetters) {
+    testAuth(state) {
+      return state.isAuthenticated;  
+    },
     finalCounter(state) {
       return state.count * 2
     },

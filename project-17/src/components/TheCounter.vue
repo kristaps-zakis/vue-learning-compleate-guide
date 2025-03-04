@@ -5,11 +5,13 @@
 <script>
 import { mapGetters } from 'vuex'
 
-console.log(mapGetters(['finalCounter']))
+// console.log(mapGetters(['finalCounter']))
 
 export default {
   computed: {
-    ...mapGetters(['finalCounter']),
+   
+    ...mapGetters('numbers', ['finalCounter']),
+     // ...mapGetters(['finalCounter']),
     // count() {
     //   // return this.$store.state.count
 

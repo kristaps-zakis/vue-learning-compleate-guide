@@ -40,9 +40,13 @@ export default {
       // })
 
       this.$store.dispatch({
-        type: 'increase',
+        type: 'numbers/increase',
         value: 10,
       })
+      // this.$store.dispatch({
+      //   type: 'increase',
+      //   value: 10,
+      // })
       // console.log("Called")
     },
   },
