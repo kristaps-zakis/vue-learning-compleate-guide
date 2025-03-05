@@ -1,0 +1,5 @@
+<template>
+  <section>
+    <h2>Register</h2>
+  </section>
+</template>
