@@ -3,5 +3,4 @@
   <RouterView></RouterView>
 
   <RouterLink to="/coaches/c1/contact">Contact coach</RouterLink>
-
 </template>
