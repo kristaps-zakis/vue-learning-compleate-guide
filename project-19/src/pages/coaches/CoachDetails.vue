@@ -21,8 +21,6 @@
       <p>{{ description }}</p>
     </base-card>
   </section>
-
-  <!-- <RouterLink to="/coaches/c1/contact">Contact coach</RouterLink> -->
 </template>
 
 <script>
@@ -34,9 +32,6 @@ export default {
     }
   },
   created() {
-    console.log(this)
-    console.log(this.id)
-    // this.id = "c1";
     this.selectedCoach = this.$store.getters['coaches/coaches'].find(
       (coach) => coach.id === this.id,
     )
