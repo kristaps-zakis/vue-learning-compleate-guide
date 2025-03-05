@@ -1,5 +1,4 @@
 <template>
-    <div>
-        Hi coaches
-    </div>
+  <section>FILTER</section>
+  <section>LIST OF COACHES</section>
 </template>
