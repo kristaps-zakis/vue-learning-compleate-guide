@@ -6,7 +6,7 @@ export default {
   namespaced: true,
   state() {
     return {
-      couches: [
+      coaches: [
         {
           id: 'c1',
           firstName: 'Maximilian',

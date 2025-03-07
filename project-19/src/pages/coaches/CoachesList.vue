@@ -49,10 +49,10 @@ export default {
   },
   computed: {
     filteredCoaches() {
-      const couches = this.$store.getters['coaches/coaches'];
-      console.log(this.activeFilters)
+      const coaches = this.$store.getters['coaches/coaches'];
+      // console.log(this.activeFilters)
 
-      return couches.filter(coach => {
+      return coaches.filter(coach => {
         if (this.activeFilters.frontend && coach.areas.includes('frontend')) {
           return true
         }
