@@ -1,8 +1,8 @@
 export default {
   coaches(state) {
-    return state.couches
+    return state.coaches
   },
   hasCoaches(state) {
-    return state.couches && state.couches.length > 0
+    return state.coaches && state.coaches.length > 0
   },
 }
