@@ -1,15 +1,28 @@
 export default {
-    registerCoach(context, data) {
-        const coach = {
-            // id: new Date().toISOString(),
-            id: "c3",
-            firstName: data.firstName,
-            lastName: data.lastName,
-            areas: data.areas,
-            description: data.description,
-            hourlyRate: data.rate,
-        }
-        
-        context.commit('registerCoach', coach)
+  async registerCoach(context, data) {
+    const userId = context.rootGetters.userId;
+    const coachData = {
+      firstName: data.first,
+      lastName: data.last,
+      description: data.desc,
+      hourlyRate: data.rate,
+      areas: data.areas
+    };
+
+    const response = await fetch(`https://couches-vue-default-rtdb.europe-west1.firebasedatabase.app//coaches/${userId}.json`, {
+      method: 'PUT',
+      body: JSON.stringify(coachData)
+    });
+
+    // const responseData = await response.json();
+
+    if (!response.ok) {
+      // error ...
     }
-}
+
+    context.commit('registerCoach', {
+      ...coachData,
+      id: userId
+    });
+  }
+};

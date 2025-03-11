@@ -2,16 +2,15 @@
   <form @submit.prevent="submitForm">
     <div class="form-control">
       <label for="email">Your E-Mail</label>
-      <input type="email" id="email" v-model.trim="email" @blur="validateEmail" />
-      <p v-if="emailIsInvalid">Please enter a valid email address</p>
-    </div>  
+      <input type="email" id="email" v-model.trim="email" />
+    </div>
     <div class="form-control">
       <label for="message">Message</label>
-      <textarea id="message" v-model.trim="message" @blur="validateMessage"></textarea>
-      <p v-if="messageIsInvalid">Please enter a valid email address</p>
-    </div>  
-    <div class="form-actions">
-      <button type="submit">Send Message</button>
+      <textarea rows="5" id="message" v-model.trim="message"></textarea>
+    </div>
+    <p class="errors" v-if="!formIsValid">Please enter a valid email and non-empty message.</p>
+    <div class="actions">
+      <base-button>Send Message</base-button>
     </div>
   </form>
 </template>
@@ -21,53 +20,35 @@ export default {
   data() {
     return {
       email: '',
-      emailIsInvalid: false,
       message: '',
-      messageIsInvalid: false,
-      formIsValid: true
-    }
+      formIsValid: true,
+    };
   },
   methods: {
-    validateEmail() {
-      if (this.email.trim() === '' || !this.email.includes('@')) {
-        this.emailIsInvalid = true;
-      } else {
-        this.emailIsInvalid = false;
-      }
-    },
-    validateMessage() {
-      if (this.message.trim() === '') {
-        this.messageIsInvalid = true;
-      } else {
-        this.messageIsInvalid = false;
-      }
-    },
-    submitForm () {
+    submitForm() {
       this.formIsValid = true;
-
-      this.validateEmail();
-      this.validateMessage();
-
-      // if (!this.emailIsInvalid && !this.messageIsInvalid) {
-      //   console.log('Form submitted');
-      // }
-
-      console.log("send message")
-
+      if (
+        this.email === '' ||
+        !this.email.includes('@') ||
+        this.message === ''
+      ) {
+        this.formIsValid = false;
+        return;
+      }
       this.$store.dispatch('requests/contactCoach', {
         email: this.email,
         message: this.message,
         coachId: this.$route.params.id
       });
-
       this.$router.replace('/coaches');
-    }
-  }
-}
+
+    },
+  },
+};
 </script>
 
 <style scoped>
-  form {
+form {
   margin: 1rem;
   border: 1px solid #ccc;
   border-radius: 12px;
