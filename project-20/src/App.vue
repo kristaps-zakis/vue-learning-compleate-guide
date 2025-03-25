@@ -1,21 +1,74 @@
-<script setup>
-import { ref } from 'vue';
-
-const userName = ref('Maximilian');
-
-setTimeout(function() {
-  console.log(userName)
-  userName.value = 'Max';
-}, 2000);
-</script>
-
 <template>
   <section class="container">
-    <h2>{{ userName }}</h2>
+    <h2>{{ user.name }}</h2>
+    <h3>{{ user.age }}</h3>
+    <user-data :userName="user.name" :userAge="user.age" class="user-datas"></user-data>
+    <button @click="setNewAge">Change Age</button>
+    <div>
+      <input type="text" @input="setFirstName" placeholder="First Name" />
+      <input type="text" v-model="user.lastName" placeholder="Last name" />
+      <input type="text" placeholder="Custom text" ref="customText" />
+      <button @click="setCustomText">Set custom text</button>
+    </div>
+    <h4>{{ fullName }}</h4>
   </section>
 </template>
 
 
+<script setup>
+import { ref , provide, onBeforeMount } from 'vue';
+import UserData from './components/UserData.vue';
+import { reactive, computed, watch } from 'vue';
+
+onBeforeMount(function() {
+  console.log('onBeforeMount');
+})
+
+// const user = ref({
+//   name: 'Maximilian',
+//   age: 31
+// })
+
+const customText = ref(null);
+
+const user = reactive({
+  name: 'Maximilian',
+  firstName: "",
+  lastName: "",
+  age: 31
+});
+
+
+
+watch(user, function(newValues, oldValues) {
+  // console.log(newValues);
+  // console.log(oldValues);
+})
+
+function setNewAge() {
+  user.age = 33
+}
+provide('user', user);
+
+function setFirstName(event) {
+  user.firstName = event.target.value
+}
+
+function setCustomText() {
+  user.firstName = customText.value.value;
+}
+
+const fullName = computed(function() {
+  return user.firstName + " " + user.lastName;
+})
+
+// setTimeout(function() {
+//   // user.value.name = 'Max';
+//   // user.value.age = 32;
+//   user.name = 'Max';
+//   user.age = 32;
+// }, 2000);
+</script>
 
 <style>
 * {
