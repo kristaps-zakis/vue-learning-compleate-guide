@@ -11,6 +11,7 @@
 import { useAttrs, useSlots, inject, watch } from 'vue';
 defineProps(['userName', 'userAge'])
 
+
 const user = inject('user');
 
 let age = user.age;

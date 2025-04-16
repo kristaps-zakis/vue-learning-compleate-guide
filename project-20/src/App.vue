@@ -39,11 +39,22 @@ const user = reactive({
 });
 
 
+watch([customText], (newVal, oldVal) => {
+  console.log('new:', newVal);
+  console.log('old:', oldVal);
+});
 
-watch(user, function(newValues, oldValues) {
-  // console.log(newValues);
-  // console.log(oldValues);
-})
+
+let oldSnapshot = JSON.parse(JSON.stringify(user)); // initial snapshot
+
+watch(user, (newVal, oldVal) => {
+  const newSnapshot = JSON.parse(JSON.stringify(newVal));
+  
+  // console.log('new:', newSnapshot);
+  // console.log('old:', oldSnapshot);
+
+  oldSnapshot = newSnapshot; // update the snapshot for next time
+}, { deep: true });
 
 function setNewAge() {
   user.age = 33
