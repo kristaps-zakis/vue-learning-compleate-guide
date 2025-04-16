@@ -3,16 +3,10 @@
   <control-center></control-center>
 </template>
 
-<script>
+<script setup>
 import ControlCenter from './components/ControlCenter.vue';
 import TheCounter from './components/TheCounter.vue';
 
-export default {
-  components: {
-    ControlCenter,
-    TheCounter,
-  },
-};
 </script>
 
 <style>
